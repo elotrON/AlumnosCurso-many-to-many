@@ -1,0 +1,23 @@
+info:
+  name: Crear curso
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:8080/curso
+  body:
+    type: json
+    data: |-
+      {
+        "nombre": "Introduccion a medicina",
+        "duracion": "400",
+        "habilidades":"cirugia fina"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

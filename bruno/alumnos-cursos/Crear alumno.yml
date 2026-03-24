@@ -10,10 +10,10 @@ http:
     type: json
     data: |-
       {
-        "nombre": "Juan",
-        "apellidos": "Alvarez",
-        "dni": "777777Z",
-        "direccion": "Gran Via 55",
+        "nombre": "Tome",
+        "apellidos": "Fernandez",
+        "dni": "121212",
+        "direccion": "Rua fast",
         "telefono": "111222333"
       }
   auth: inherit

@@ -1,17 +1,14 @@
 package com.example.usuarioCursos.controller;
 
-import com.example.usuarioCursos.dto.AlumnoRequest;
-import com.example.usuarioCursos.dto.AlumnoResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.usuarioCursos.dto.*;
+import org.springframework.web.bind.annotation.*;
 import com.example.usuarioCursos.service.AlumnoService;
 
 @RestController
 public class AlumnoController {
 
     AlumnoService alumnoService;
+
 
     public AlumnoController(AlumnoService alumnoService) {
         this.alumnoService = alumnoService;
@@ -20,6 +17,17 @@ public class AlumnoController {
     @PostMapping("/alumno")
     public AlumnoResponse nuevoAlumno(@RequestBody AlumnoRequest alumnoRequest){
         return alumnoService.crearAlumno(alumnoRequest);
+    }
+
+    @PostMapping("/curso")
+    public CursoResponse crearCurso(@RequestBody CursoRequest cursoRequest){
+        return alumnoService.crearCurso(cursoRequest);
+    }
+
+    @PostMapping("/alumno/{idAlumno}")
+    public AlumnoResponse agregarCursoAAlumno(@PathVariable Integer idAlumno, @RequestBody AgregarCursoRequest idCurso){
+
+        return alumnoService.agregarCursoAUsuario(idAlumno, idCurso);
     }
 
 
