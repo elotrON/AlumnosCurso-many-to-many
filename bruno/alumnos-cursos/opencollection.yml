@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: AlumnosCursos
+  name: alumnos-cursos
 config:
   proxy:
     inherit: true
@@ -13,6 +13,11 @@ config:
         username: ""
         password: ""
       bypassProxy: ""
+
+request:
+  variables:
+    - name: url
+      value: http:/localhost:8080
 bundled: false
 extensions:
   bruno:
