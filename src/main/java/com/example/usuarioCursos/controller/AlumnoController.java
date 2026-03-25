@@ -14,23 +14,53 @@ public class AlumnoController {
         this.alumnoService = alumnoService;
     }
 
+    /**
+     * CREAR ALUMNO
+     * @param alumnoRequest
+     * @return
+     */
     @PostMapping("/alumno")
     public AlumnoResponse nuevoAlumno(@RequestBody AlumnoRequest alumnoRequest){
         return alumnoService.crearAlumno(alumnoRequest);
     }
 
+    /**
+     * CREAR CURSO
+     * @param cursoRequest
+     * @return
+     */
     @PostMapping("/curso")
     public CursoResponse crearCurso(@RequestBody CursoRequest cursoRequest){
         return alumnoService.crearCurso(cursoRequest);
     }
 
+    /**
+     * AGREGAR CURSO A UN ALUMNO
+     * @param idAlumno
+     * @param idCurso
+     * @return
+     */
     @PostMapping("/alumno/{idAlumno}")
     public AlumnoResponse agregarCursoAAlumno(@PathVariable Integer idAlumno, @RequestBody AgregarCursoRequest idCurso){
-
         return alumnoService.agregarCursoAUsuario(idAlumno, idCurso);
     }
 
+    /**
+     * BORRAR CURSO DE UN ALUMNO
+     * @param idAlumno
+     * @param idCurso
+     * @return
+     */
+    @DeleteMapping("/alumno/{idAlumno}/curso/{idCurso}")
+    private AlumnoResponse borrarCursoDeAlumno(@PathVariable Integer idAlumno, @PathVariable Integer idCurso){
+        return alumnoService.borrarCursoUsuario(idAlumno,idCurso);
+    }
 
+
+    /**
+     * SOLO PARA TEST DE FUNCIONAMIENTO
+     * @return
+     */
     @GetMapping("/test")
     public String test() {
         return "ok";

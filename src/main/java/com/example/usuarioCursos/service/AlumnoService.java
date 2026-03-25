@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.example.usuarioCursos.repository.AlumnoRepository;
 import com.example.usuarioCursos.repository.CursoRepository;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Service
 public class AlumnoService {
 
@@ -55,7 +58,12 @@ public class AlumnoService {
     }
 
 
-    // añadir curso a usuario
+    /**
+     * AGREGAR CURSO A UN ALUMNO
+     * @param idAlumno
+     * @param idCurso
+     * @return
+     */
     public AlumnoResponse agregarCursoAUsuario(Integer idAlumno, AgregarCursoRequest idCurso){
         Alumno alumno;
         Curso curso;
@@ -71,8 +79,32 @@ public class AlumnoService {
         return toResponse(alumno);
     }
 
-    // quitar curso de usuario
+    /**
+     * BORRAR ALUMNO DE UN CURSO
+     * @param idAlumno
+     * @param idCurso
+     * @return
+     */
+    public AlumnoResponse borrarCursoUsuario(Integer idAlumno, Integer idCurso){
+        Alumno alumno = new Alumno();
+        Curso curso = new Curso();
 
+        //si no existe ese alumno
+        alumno = alumnoRepository.findById(idAlumno).orElse(null);
+        if (alumno == null) return null;
+
+        //si no existe ese curso
+        curso = cursoRepository.findById(idCurso).orElse(null);
+        if(curso == null) return null;
+
+        // borrar relacion
+        alumno.removeCurso(curso);
+
+        // guardar alumno de nuevo
+        alumnoRepository.save(alumno);
+
+        return toResponse(alumno);
+    }
 
     // obtener usuario por id
 
@@ -100,6 +132,16 @@ public class AlumnoService {
         alumnoResponse.setDireccion(alumno.getDireccion());
         alumnoResponse.setTelefono(alumno.getTelefono());
 
+        // creamos un Set vacio tipo Integer para almacenar los cursos
+        Set<Integer> idsCursos = new HashSet<>();
+
+        // alumno.getCursos() devuelve un Set<Curso>
+        // recorremos todos los Cursos de ese set y guardamos el id en el Set<Integer>
+        for (Curso c : alumno.getCursos()){
+            idsCursos.add(c.getId());
+        }
+
+        alumnoResponse.setCursos(idsCursos);
         return alumnoResponse;
     }
 

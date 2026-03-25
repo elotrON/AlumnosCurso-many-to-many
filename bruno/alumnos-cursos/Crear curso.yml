@@ -5,14 +5,14 @@ info:
 
 http:
   method: POST
-  url: http://localhost:8080/curso
+  url: "{{url}}/curso"
   body:
     type: json
     data: |-
       {
-        "nombre": "Introduccion a medicina",
-        "duracion": "400",
-        "habilidades":"cirugia fina"
+        "nombre": "Agricultura moderna",
+        "duracion": "37",
+        "habilidades":"cultivo tomates"
       }
   auth: inherit
 

@@ -1,0 +1,15 @@
+info:
+  name: borrar Curso a Alumno
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{url}}/alumno/1/curso/2"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

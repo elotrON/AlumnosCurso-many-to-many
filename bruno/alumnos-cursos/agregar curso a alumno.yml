@@ -5,12 +5,12 @@ info:
 
 http:
   method: POST
-  url: http://localhost:8080/alumno/2
+  url: "{{url}}/alumno/5"
   body:
     type: json
     data: |-
       {
-        "id_curso":"2"
+        "idCurso":"1"
       }
   auth: inherit
 
