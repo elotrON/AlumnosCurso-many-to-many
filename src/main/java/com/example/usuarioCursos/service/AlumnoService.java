@@ -115,7 +115,17 @@ public class AlumnoService {
     }
 
 
-    // obtener curso por id
+    /**
+     * OBTENER CURSO POR ID
+     * @param id
+     * @return
+     */
+    public CursoResponse obterCurso(Integer id){
+        Curso curso = cursoRepository.findById(id).orElse(null);
+        if(curso == null) return null;
+
+        return toResponse(curso);
+    }
 
 
     // listar usuarios

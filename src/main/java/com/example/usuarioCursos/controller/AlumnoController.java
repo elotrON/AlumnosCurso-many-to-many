@@ -56,11 +56,27 @@ public class AlumnoController {
         return alumnoService.borrarCursoUsuario(idAlumno,idCurso);
     }
 
-
+    /**
+     * OBTENER ALUMNO POR ID
+     * @param idAlumno
+     * @return
+     */
     @GetMapping("/alumno/{idAl}")
-    public AlumnoResponse obtenerAlumnoPorId(@PathVariable Integer idAl){
-        return alumnoService.obtenerAlumno(idAl);
+    public AlumnoResponse obtenerAlumnoPorId(@PathVariable Integer idAlumno){
+        return alumnoService.obtenerAlumno(idAlumno);
     }
+
+    /**
+     * OBTENER CURSO POR ID
+     * @param idCurso
+     * @return
+     */
+    @GetMapping("/curso/{idCurso}")
+    public CursoResponse obtenerCursoPorId(@PathVariable Integer idCurso){
+        return alumnoService.obterCurso(idCurso);
+    }
+
+
 
 
     /**
