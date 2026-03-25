@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.example.usuarioCursos.repository.AlumnoRepository;
 import com.example.usuarioCursos.repository.CursoRepository;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -128,7 +131,20 @@ public class AlumnoService {
     }
 
 
-    // listar usuarios
+    // listar alumnos
+    public List<AlumnoResponse> listarAlumnos(){
+
+        // obtenemos los alumnos
+        List<Alumno> alumnos = new ArrayList<>();
+        alumnos = alumnoRepository.findAll();
+
+        List<AlumnoResponse> alumnoResponses = new ArrayList<>();
+        for(Alumno a : alumnos){
+            alumnoResponses.add(toResponse(a));
+        }
+        return (alumnoResponses);
+    }
+
 
 
     // listar cursos

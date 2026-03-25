@@ -4,6 +4,8 @@ import com.example.usuarioCursos.dto.*;
 import org.springframework.web.bind.annotation.*;
 import com.example.usuarioCursos.service.AlumnoService;
 
+import java.util.List;
+
 @RestController
 public class AlumnoController {
 
@@ -76,6 +78,10 @@ public class AlumnoController {
         return alumnoService.obterCurso(idCurso);
     }
 
+    @GetMapping("/alumno")
+    public List<AlumnoResponse> obtenerAlumnos(){
+        return alumnoService.listarAlumnos();
+    }
 
 
 
